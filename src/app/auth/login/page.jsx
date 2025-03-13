@@ -2,7 +2,7 @@
 
 import { LoginForm } from "@/components/login-form"
 import { useRouter } from "next/navigation";
-import  signLogin  from "@/services/auth.js";
+import  signLogin  from "@/services/auth-provider.jsx";
 
 export default function LoginPage() {
 
@@ -32,3 +32,4 @@ export default function LoginPage() {
     </div>)
   );
 }
+k
