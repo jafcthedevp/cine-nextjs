@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Film, Ticket, Calendar, TrendingUp, Heart } from "lucide-react"
+import { Film, Ticket, Calendar, TrendingUp, Heart } from 'lucide-react'
+import AnalyticsCharts from "@/components/analytics-charts"
 
 export default function DashboardPage() {
   return (
@@ -175,12 +176,12 @@ export default function DashboardPage() {
           <Card className="bg-gray-900 border-gray-800">
             <CardHeader>
               <CardTitle className="text-white">Análisis de Visualización</CardTitle>
-              <CardDescription>Tus géneros y películas más vistos</CardDescription>
+              <CardDescription>
+                Tus géneros y películas más vistos
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="h-[300px] flex items-center justify-center border border-dashed border-gray-800 rounded-lg">
-                <p className="text-gray-400">Gráfico de análisis (simulado)</p>
-              </div>
+              <AnalyticsCharts />
             </CardContent>
           </Card>
         </TabsContent>

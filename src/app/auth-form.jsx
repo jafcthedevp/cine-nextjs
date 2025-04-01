@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { supabase } from "@/supabase/client"
-
+import { useToast } from "@/hooks/use-toast"
 
 export default function AuthForm({ mode }) {
   const [email, setEmail] = useState("")
