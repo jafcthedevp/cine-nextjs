@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { useToast } from "@/hooks/use-toast"
 import { Bell, Mail, CreditCard, Languages, Moon, Sun, LogOut } from 'lucide-react'
-import { useAuth } from "@/components/auth-provider"
+import { useAuth } from "@/services/auth-provider"
 
 export default function ConfiguracionPage() {
   const { toast } = useToast()
