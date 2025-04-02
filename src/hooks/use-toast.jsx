@@ -1,6 +1,5 @@
 "use client"
 
-// hooks/use-toast.js
 import { useState, useEffect } from "react"
 
 const TOAST_LIMIT = 5

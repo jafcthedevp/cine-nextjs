@@ -1,13 +1,13 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useAuth } from "@/components/auth-provider"
+import { useAuth } from "@/services/auth-provider"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast"
-import { createReservation } from "@/lib/supabase-service"
+import { createReservation } from "@/supabase/supabase-service"
 
 export default function MovieBooking({ movie, onSuccess }) {
     const { user } = useAuth()
