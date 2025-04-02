@@ -51,12 +51,12 @@ export function DashboardSidebar() {
       href: "/dashboard/perfil",
       isActive: pathname === "/dashboard/perfil",
     },
-    {
-      title: "Configuración",
-      icon: Settings,
-      href: "/dashboard/configuracion",
-      isActive: pathname === "/dashboard/configuracion",
-    },
+    //{
+    //  title: "Configuración",
+    //  icon: Settings,
+    //  href: "/dashboard/configuracion",
+    //  isActive: pathname === "/dashboard/configuracion",
+    //},
   ]
 
   return (

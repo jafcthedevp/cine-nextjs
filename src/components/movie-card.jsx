@@ -2,20 +2,37 @@
 
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { Star, Calendar } from "lucide-react"
+import { Star, Calendar, ImageOff } from "lucide-react"
+import { useState } from "react"
 
 export default function MovieCard({ movie, onClick }) {
+    const [imageError, setImageError] = useState(false)
+
+    const handleImageError = () => {
+        setImageError(true)
+    }
+
     return (
         <Card
             className="overflow-hidden bg-gray-900 border-gray-800 transition-transform hover:scale-105 cursor-pointer"
             onClick={onClick}
         >
             <div className="relative aspect-[2/3] w-full overflow-hidden">
-                <img
-                    src={movie.poster_url || "/placeholder.svg?height=450&width=300"}
-                    alt={movie.title}
-                    className="h-full w-full object-cover transition-transform hover:scale-110"
-                />
+                {!imageError ? (
+                    <img
+                        src={movie.poster_url || "/placeholder.svg?height=450&width=300"}
+                        alt={movie.title}
+                        className="h-full w-full object-cover transition-transform hover:scale-110"
+                        onError={handleImageError}
+                    />
+                ) : (
+                    <div className="h-full w-full flex items-center justify-center bg-gray-800">
+                        <div className="flex flex-col items-center text-gray-400">
+                            <ImageOff className="h-10 w-10 mb-2" />
+                            <span className="text-xs text-center px-2">{movie.title}</span>
+                        </div>
+                    </div>
+                )}
                 <div className="absolute top-2 right-2">
                     <Badge className="bg-red-500 hover:bg-red-600">{movie.rating_mpaa || "PG-13"}</Badge>
                 </div>

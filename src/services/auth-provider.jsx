@@ -21,7 +21,6 @@ export function AuthProvider({ children }) {
 
     getSession()
 
-    // Escuchar cambios en la autenticación
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {

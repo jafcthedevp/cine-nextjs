@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, ImageOff } from "lucide-react"
 
 export default function MovieCarousel({ movies }) {
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [imageError, setImageError] = useState({})
 
     // Autoplay
     useEffect(() => {
@@ -23,6 +24,13 @@ export default function MovieCarousel({ movies }) {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % movies.length)
     }
 
+    const handleImageError = (id) => {
+        setImageError((prev) => ({
+            ...prev,
+            [id]: true,
+        }))
+    }
+
     if (!movies || movies.length === 0) {
         return null
     }
@@ -33,12 +41,23 @@ export default function MovieCarousel({ movies }) {
         <div className="relative h-[600px] w-full overflow-hidden">
             {/* Imagen de fondo con gradiente */}
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent z-10" />
-            <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out scale-105"
-                style={{
-                    backgroundImage: `url(${currentMovie.backdrop_url || "/placeholder.svg?height=600&width=1920"})`,
-                }}
-            />
+
+            {!imageError[currentMovie.id] ? (
+                <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out scale-105"
+                    style={{
+                        backgroundImage: `url(${currentMovie.backdrop_url || "/placeholder.svg?height=600&width=1920"})`,
+                    }}
+                    onError={() => handleImageError(currentMovie.id)}
+                />
+            ) : (
+                <div className="absolute inset-0 bg-gray-900 flex items-center justify-center">
+                    <div className="flex flex-col items-center text-gray-400">
+                        <ImageOff className="h-20 w-20 mb-4" />
+                        <span className="text-xl">Imagen no disponible</span>
+                    </div>
+                </div>
+            )}
 
             {/* Contenido del carrusel */}
             <div className="relative z-20 mx-auto flex h-full max-w-7xl flex-col items-start justify-end px-4 pb-20">
